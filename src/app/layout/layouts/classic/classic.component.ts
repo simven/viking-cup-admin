@@ -95,7 +95,6 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy {
                 id: 'clashes',
                 title: 'Affrontements',
                 type: 'group',
-                icon: 'heroicons_outline:trophy',
                 children: [
                     {
                         id: 'clashes.qualifying',
@@ -108,7 +107,7 @@ export class ClassicLayoutComponent implements OnInit, OnDestroy {
                         id: 'clashes.battle',
                         title: 'Battles',
                         type: 'basic',
-                        icon: 'heroicons_outline:users',
+                        icon: 'heroicons_outline:trophy',
                         link: '/battle'
                     }
                 ]
