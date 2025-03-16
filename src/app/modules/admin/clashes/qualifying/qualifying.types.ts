@@ -4,6 +4,7 @@ export interface RoundCategoryPilotsQualifying {
     vehicle: string;
     qualifyings: Qualifying[];
     pilotEvent: PilotEvent;
+    isCompeting: boolean;
 }
 
 export interface Pilot {

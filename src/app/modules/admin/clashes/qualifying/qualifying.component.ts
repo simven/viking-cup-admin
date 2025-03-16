@@ -15,6 +15,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
 import {MatTooltip} from "@angular/material/tooltip";
 import {ToastrService} from "ngx-toastr";
+import {MatSlideToggle, MatSlideToggleModule} from "@angular/material/slide-toggle";
 
 @Component({
     selector: 'app-qualifying',
@@ -27,6 +28,7 @@ import {ToastrService} from "ngx-toastr";
         MatInputModule,
         MatIconModule,
         MatTooltip,
+        MatSlideToggleModule,
     ]
 })
 export class QualifyingComponent implements OnInit {
@@ -83,8 +85,11 @@ export class QualifyingComponent implements OnInit {
                             pilotId: [pilotQualifying.pilot.id],
                             pilotFirstName: [pilotQualifying.pilot.firstName],
                             pilotLastName: [pilotQualifying.pilot.lastName],
+                            isCompeting: [pilotQualifying.isCompeting, Validators.required],
                             qualifs: this.formBuilder.array([])
                         });
+
+                        pilotQualifyingForm.get('isCompeting').valueChanges.subscribe(() => this.saveQualifying());
 
                         if (pilotQualifying.qualifyings.length > 0) {
                             pilotQualifying.qualifyings.forEach((qualifying) => {

@@ -42,16 +42,21 @@
     <!-- Content -->
     <div class="-mt-px flex flex-auto flex-col border-t pt-6 sm:pt-10 py-20 px-8 gap-6" [formGroup]="qualifyingForm">
         @if (roundCategoryPilotsQualifying && roundCategoryPilotsQualifying.length > 0) {
-            <div class="grid grid-cols-4 gap-10">
+            <div class="grid grid-cols-4 gap-14">
                 @for (pilotQualifying of qualifyingForm.get('pilotsQualifying')['controls']; track trackByFn($index, pilotQualifying)) {
                     <div class="flex flex-col col-span-4 sm:col-span-2 lg:col-span-1">
                         <div class="flex flex-row items-center justify-between">
                             <div class="text-lg font-semibold">{{pilotQualifying.get('pilotFirstName').value}} {{pilotQualifying.get('pilotLastName').value}}</div>
+
+                            <mat-slide-toggle
+                                [formControl]="pilotQualifying.get('isCompeting')"
+                                [color]="'primary'">
+                            </mat-slide-toggle>
                         </div>
 
                         <div class="flex flex-row items-center gap-4 mt-4">
                             @for (qualif of pilotQualifying.get('qualifs')['controls']; track trackByFn(i, qualif); let i = $index) {
-                                <mat-form-field class="fuse-mat-dense" [subscriptSizing]="'dynamic'">
+                                <mat-form-field class="w-full fuse-mat-dense" [subscriptSizing]="'dynamic'">
                                     <mat-label>Passage {{qualif.get('passage').value}}</mat-label>
                                     <input matInput type="number" [placeholder]="'Points'" [formControl]="qualif.get('points')" (blur)="saveQualifying()" />
                                 </mat-form-field>
